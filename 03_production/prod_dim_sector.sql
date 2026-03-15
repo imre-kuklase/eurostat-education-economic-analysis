@@ -1,5 +1,5 @@
 -- Luuakse või asendatakse õppeasutuse sektori dimensioonitabel
-CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.dim_sector` AS
+CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_sector` AS
 SELECT DISTINCT 
   sector_code, -- Algne kood faktitabelist (nt PUB, PRV_IND)
   
