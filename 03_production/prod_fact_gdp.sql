@@ -13,7 +13,7 @@ SELECT
   na_item, -- B1GQ tähistab SKP-d turuhindades (Eurostati standard).
   gdp_amount
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_gdp`
-WHERE year BETWEEN 2012 AND 2024 
+WHERE year BETWEEN 2012 AND 2022 
   AND unit = 'CP_MEUR' 
   AND na_item = 'B1GQ'
   AND gdp_amount > 0; -- Välistame puuduvad või vigased kirjed
