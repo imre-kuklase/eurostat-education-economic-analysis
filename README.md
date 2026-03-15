@@ -8,6 +8,12 @@ See projekt analüüsib seoseid kõrghariduse struktuuri (era- vs avalik sektor)
 - [ ] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
 - [ ] **IV etapp:** Visualiseerimine Power BI-s.
 
+## Andmeallikad
+
+Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
+1. **Üliõpilaste arv ja struktuur:** [educ_uoe_enrt01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_enrt01/default/table?lang=en) – hõlmab õppurite arvu riigiti, haridustaseme ja asutuse sektori lõikes.
+2. **Hariduse rahastamine:** [educ_uoe_finf01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_finf01/default/table?lang=en) – näitab rahavoogusid allikate (avalik/era) ja saajate (avalik/era asutused) vahel.
+
 ## Tehniline arhitektuur
 Andmed on laaditud **Google Cloud Storage** bucketist **BigQuery** andmelattu. Andmemudel on ehitatud **Star Schema** põhimõttel.
 
