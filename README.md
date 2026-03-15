@@ -22,6 +22,7 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
 3. **03_production (Gold):** Lõplik andmemudel (Star Schema). Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
 
+```mermaid
 graph TD
     %% Defineerime stiilid
     classDef bronze fill:#cd7f32,stroke:#333,stroke-width:2px,color:#fff;
@@ -72,6 +73,7 @@ graph TD
     class L1,L2,L3 bronze;
     class S1,S2,S3 silver;
     class F1,F2,F3,D1,D2,D3,D4,D5 gold;
+```
 
 ## Failide struktuur
 - 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
