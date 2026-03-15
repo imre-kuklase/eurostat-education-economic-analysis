@@ -56,5 +56,5 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 - `prod_fact_education.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
 - `prod_fact_education.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
 - `prod_fact_finance.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
-- `prod_fact_education.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
-- `prod_fact_education.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_finance.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
+- `prod_fact_finance.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
