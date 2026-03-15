@@ -1,3 +1,8 @@
+/*
+  TABEL: prod_dim_date
+  KIRJELDUS: Ühtne ajatelg perioodiks 2012-2024.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_date` AS
 SELECT 
   year,
