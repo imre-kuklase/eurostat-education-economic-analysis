@@ -1,5 +1,5 @@
 -- Luuakse või asendatakse haridustaseme (ISCED) dimensioonitabel
-CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.dim_isced` AS
+CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_isced` AS
 SELECT DISTINCT 
   isced_level, -- Rahvusvaheline haridustaseme kood (nt ED6)
   
