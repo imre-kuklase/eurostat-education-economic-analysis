@@ -1,4 +1,17 @@
+/*
+  TABEL: prod_fact_finance
+  KIRJELDUS: Hariduse rahastamise kulud miljonites eurodes.
+  ALLIKAS: stg_finance
+  FILTER: 2012-2024, sünkroniseeritud teiste faktitabelitega.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_finance` AS
-SELECT country_code, sector_code, isced_level, year, expenditure_amount
+SELECT 
+  country_code,      -- FK: prod_dim_country
+  sector_code,       -- FK: prod_dim_sector
+  isced_level,       -- FK: prod_dim_isced
+  year,              -- FK: prod_dim_date
+  expenditure_amount -- Mõõdik: kulu miljonites eurodes
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance`
-WHERE expenditure_amount > 0;
+WHERE year BETWEEN 2012 AND 2024 
+  AND expenditure_amount > 0;
