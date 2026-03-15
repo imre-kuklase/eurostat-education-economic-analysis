@@ -40,7 +40,7 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
 
 
-## SIIT EDASI HAKKAB OSA, MILLE VAJALIKKUS HINNATA JA SISU KORRIGEERIDA JA TÕSTA VAJADUSEL ÜMBER FAILI SEES
+## Andmemudel (Gold kiht)
 
 ### Faktitabelid
 1. **`prod_fact_education`**: Sisaldab numbrilisi väärtusi (`student_count`) ja välisvõtmeid (FK), mis seovad andmed dimensioonidega.
