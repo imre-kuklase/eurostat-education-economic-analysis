@@ -1,7 +1,7 @@
 /*
   SKRIPT: land_gdp.sql
   EESMÄRK: Eurostati SKP (nama_10_gdp) toorandmete laadimine GCS-ist BigQuerysse.
-  FORMAAT: TSV (tab-separated values), metadata esimeses tulpas.
+  FORMAAT: TSV (tab-separated values), metadata esimeses veerus.
 */
 
 LOAD DATA OVERWRITE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.land_gdp`
