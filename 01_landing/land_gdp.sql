@@ -1,9 +1,14 @@
--- SKP toorandmete laadimine Google Cloud Storage bucketist
+/*
+  SKRIPT: land_gdp.sql
+  EESMÄRK: Eurostati SKP (nama_10_gdp) toorandmete laadimine GCS-ist BigQuerysse.
+  FORMAAT: TSV (tab-separated values), metadata esimeses tulpas.
+*/
+
 LOAD DATA OVERWRITE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.land_gdp`
 FROM FILES (
   format = 'CSV',
-  uris = ['gs://kursusetoo/estat_nama_10_gdp.tsv'],
-  field_delimiter = '\t',
+  uris = ['gs://sinu-bucket/estat_nama_10_gdp.tsv'],
+  field_delimiter = '\t', -- Eurostati failid on tavaliselt tab-erandatud
   skip_leading_rows = 1,
   allow_jagged_rows = true
 );
