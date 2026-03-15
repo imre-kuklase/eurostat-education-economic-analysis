@@ -5,7 +5,7 @@ Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja ri
 ## 🎯 Analüütilised fookusküsimused
 Projekt on loodud vastama järgmistele küsimustele:
 - Kuidas korreleerub kõrghariduse rahastamine riigi majandusliku võimekusega (SKP)?
-- Kas erakõrghariduse osakaal riigiti mõjutab majanduslikku edukust?
+- Erakõrghariduse osakaalu mõju riigiti majandusnäitajatele?
 - Millised Euroopa riigid investeerivad kõige rohkem ühe üliõpilase kohta?
 - Kuidas on kõrghariduse struktuur ja tudengite arv muutunud võrreldes riikide SKP kasvuga perioodil 2012–2022?
 <br>
@@ -164,10 +164,14 @@ erDiagram
     PROD-DIM-GDP-UNIT ||--o{ PROD-FACT-GDP : "filters"
 ```
 <br>
+
+### Power BI tehniline andmemudel
+![Model View](images/powerbi_model.png)
+<br>
 <br>
 
 ## 🛠️ Tehniline dokumentatsioon
-Siin sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsioon ning juhised andmetöötluse protsessi (ETL) käivitamiseks ja reprodutseerimiseks.
+Sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsioon ning juhised andmetöötluse protsessi (ETL) käivitamiseks ja reprodutseerimiseks.
 
 ### Failide struktuur
 - 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
@@ -185,6 +189,18 @@ Siin sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsio
 1. Jooksuta skriptid järjekorras 01 -> 02 -> 03.
 2. Veendu, et BigQuerys on loodud vastav dataset.
 3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
+<br>
+<br>
+
+## 📈 Analüüs ja Visualiseerimine
+Ülevaade valminud raportist ja peamistest analüütilistest mõõdikutest.
+
+### Peamised DAX mõõdikud
+$$Exp \% \text{ of GDP} = DIVIDE([Total Exp], CALCULATE([Total GDP], ALL(dim_isced)), 0)$$
+
+### Dashboardi ülevaade
+![Dashboard](images/dashboard_main.png)
+
 <br>
 <br>
 
