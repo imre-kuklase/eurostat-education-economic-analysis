@@ -22,6 +22,57 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
 3. **03_production (Gold):** Lõplik andmemudel (Star Schema). Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
 
+graph TD
+    %% Defineerime stiilid
+    classDef bronze fill:#cd7f32,stroke:#333,stroke-width:2px,color:#fff;
+    classDef silver fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000;
+    classDef gold fill:#ffd700,stroke:#333,stroke-width:2px,color:#000;
+
+    subgraph 01_Landing_Bronze
+        L1[(land_gdp)]
+        L2[(land_finance)]
+        L3[(land_high_education)]
+    end
+
+    subgraph 02_Staging_Silver
+        S1{stg_gdp}
+        S2{stg_finance}
+        S3{stg_high_education}
+    end
+
+    subgraph 03_Production_Gold
+        F1[prod_fact_gdp]
+        F2[prod_fact_finance]
+        F3[prod_fact_education]
+        
+        D1[prod_dim_country]
+        D2[prod_dim_date]
+        D3[prod_dim_isced]
+        D4[prod_dim_sector]
+        D5[prod_dim_gdp_unit]
+    end
+
+    %% Andmevoog (Lineage)
+    L1 -->|Clean & Unpivot| S1
+    L2 -->|Clean & Unpivot| S2
+    L3 -->|Clean & Unpivot| S3
+
+    S1 -->|Filter 2012-2022| F1
+    S2 -->|Filter 2012-2022| F2
+    S3 -->|Filter 2012-2022| F3
+
+    %% Seosed dimensioonidega
+    D1 -.-> F1 & F2 & F3
+    D2 -.-> F1 & F2 & F3
+    D3 -.-> F2 & F3
+    D4 -.-> F2 & F3
+    D5 -.-> F1
+
+    %% Klasside määramine stiili jaoks
+    class L1,L2,L3 bronze;
+    class S1,S2,S3 silver;
+    class F1,F2,F3,D1,D2,D3,D4,D5 gold;
+
 ## Failide struktuur
 - 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
 - 02_staging/ - Andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
