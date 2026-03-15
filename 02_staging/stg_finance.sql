@@ -1,7 +1,7 @@
 /*
   SKRIPT: stg_finance.sql
   EESMÄRK: Hariduskulude andmete unpivot ja puhastus.
-  LOOGIKA: 
+  TRANSFORMATSIOONID: 
     1. SPLIT: Eraldame metadata (sector, isced, geo).
     2. UNPIVOT: Teisendame aastate veerud ridadeks.
     3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
