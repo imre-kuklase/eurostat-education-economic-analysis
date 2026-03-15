@@ -13,7 +13,7 @@ Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja ri
 Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
 1. **Üliõpilaste arv ja struktuur:** [educ_uoe_enrt01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_enrt01/default/table?lang=en) – hõlmab õppurite arvu riigiti, haridustaseme ja asutuse sektori lõikes.
 2. **Hariduse rahastamine:** [educ_uoe_finf01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_finf01/default/table?lang=en) – näitab rahavoogusid allikate (avalik/era) ja saajate (avalik/era asutused) vahel.
-3. **Riikide GDP:** []() - näitab ...
+3. **Riikide GDP:** [nama_10_gdp](https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table?lang=en) – sisaldab andmeid sisemajanduse koguprodukti (SKP) kohta turuhindades, mis võimaldab analüüsida hariduskulutuste osakaalu riikide majanduses.
 
 ## Arhitektuur ja Andmevoog
 Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvaliteet:
