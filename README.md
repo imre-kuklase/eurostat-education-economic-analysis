@@ -2,32 +2,37 @@
 
 Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja riiklikke hariduskulutusi, kasutades Eurostati andmeid. Projekt on üles ehitatud Medallion-arhitektuuri põhimõttel Google BigQuery keskkonnas.
 
-## Analüütilised fookusküsimused
+## 🎯 Analüütilised fookusküsimused
 Projekt on loodud vastama järgmistele küsimustele:
 - Kuidas korreleerub kõrghariduse rahastamine riigi majandusliku võimekusega (SKP)?
 - Kas erakõrghariduse osakaal riigiti mõjutab majanduslikku edukust?
 - Millised Euroopa riigid investeerivad kõige rohkem ühe üliõpilase kohta?
 - Kuidas on kõrghariduse struktuur ja tudengite arv muutunud võrreldes riikide SKP kasvuga perioodil 2012–2022?
+<br>
+<br>
 
-## Projekti etapid
+## 🚀 Projekti etapid
 - [x] **I etapp:** Üliõpilaste arv ja struktuur (Eurostat UOE andmed).
 - [x] **II etapp:** Hariduse rahastamise andmete integreerimine.
 - [x] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
 - [ ] **IV etapp:** Visualiseerimine Power BI-s.
+<br>
+<br>
 
-## Andmeallikad
-
+## 📊 Andmeallikad
 Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
 1. **Üliõpilaste arv ja struktuur:** [educ_uoe_enrt01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_enrt01/default/table?lang=en) – hõlmab õppurite arvu riigiti, haridustaseme ja asutuse sektori lõikes.
 2. **Hariduse rahastamine:** [educ_uoe_finf01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_finf01/default/table?lang=en) – näitab rahavoogusid allikate (avalik/era) ja saajate (avalik/era asutused) vahel.
 3. **Riikide GDP:** [nama_10_gdp](https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table?lang=en) – sisaldab andmeid sisemajanduse koguprodukti (SKP) kohta turuhindades, mis võimaldab analüüsida hariduskulutuste osakaalu riikide majanduses.
+<br>
+<br>
 
-## Arhitektuur ja Andmevoog
+## 🏗️ Arhitektuur ja Andmevoog
 Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvaliteet:
-
 1. **01_landing (Bronze):** Toorandmete laadimine Google Cloud Storage'ist BigQuerysse. Andmeid hoitakse algsel kujul ilma muudatusteta.
 2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
 3. **03_production (Gold):** Lõplik andmemudel (Star Schema). Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
+<br>
 
 ```mermaid
 graph TD
@@ -81,31 +86,17 @@ graph TD
     class S1,S2,S3 silver;
     class F1,F2,F3,D1,D2,D3,D4,D5 gold;
 ```
+<br>
 
-## Failide struktuur
-- 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
-- 02_staging/ - Andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
-- 03_production/ - Lõplikud faktitabelid (prod_fact_) ja dimensioonid (prod_dim_).
-- README.md - Projekti dokumentatsioon.
-
-## Tehnoloogiad
-- Andmeallikas: Eurostat (API/TSV failid).
-- Andmeladu: Google BigQuery (SQL).
-- Arhitektuur: Medallion (Landing-Staging-Production).
-- Visualiseerimine: Power BI (ühendatud BigQueryga).
-
-## Kuidas kasutada
-1. Jooksuta skriptid järjekorras 01 -> 02 -> 03.
-2. Veendu, et BigQuerys on loodud vastav dataset.
-3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
-
-## Andmekvaliteet ja valideerimine
+### Andmekvaliteet ja valideerimine
 Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - Sünkroonimine: Kõik kolm andmeallikat on filtreeritud ühisele ajaraamile (2012–2022), et tagada suhtarvude matemaatiline korrektsus.
 - Puhastus: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
 - Normaliseerimine: Toorandmetest on eemaldatud staatilised märkmed (nt lipud 'b', 'p', 'e'), teisendades väärtused puhtalt numbrilisele kujule.
+<br>
+<br>
 
-## Andmemudel (Gold kiht)
+## 📊 Andmemudel (Gold kiht)
 
 ### Faktitabelid
 1. **`prod_fact_education`**: Sisaldab numbrilisi väärtusi (`student_count`) ja välisvõtmeid (FK), mis seovad andmed dimensioonidega.
@@ -129,6 +120,73 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
+<br>
 
-#### Autor
+```mermaid
+erDiagram
+    %% Faktitabelid
+    PROD-FACT-EDUCATION {
+        string country_code
+        string sector_code
+        string isced_level
+        int year
+        int student_count
+    }
+    PROD-FACT-FINANCE {
+        string country_code
+        string sector_code
+        string isced_level
+        int year
+        float expenditure_amount
+    }
+    PROD-FACT-GDP {
+        string country_code
+        int year
+        string unit_code
+        float gdp_amount
+    }
+
+    %% Dimensioonitabelid
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-FINANCE : "filters"
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-GDP : "filters"
+
+    PROD-DIM-DATE ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-DATE ||--o{ PROD-FACT-FINANCE : "filters"
+    PROD-DIM-DATE ||--o{ PROD-FACT-GDP : "filters"
+
+    PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-ISCED ||--o{ PROD-FACT-FINANCE : "filters"
+
+    PROD-DIM-SECTOR ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-SECTOR ||--o{ PROD-FACT-FINANCE : "filters"
+
+    PROD-DIM-GDP-UNIT ||--o{ PROD-FACT-GDP : "filters"
+```
+<br>
+<br>
+
+## 🛠️ Tehniline dokumentatsioon
+Siin sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsioon ning juhised andmetöötluse protsessi (ETL) käivitamiseks ja reprodutseerimiseks.
+
+### Failide struktuur
+- 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
+- 02_staging/ - Andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
+- 03_production/ - Lõplikud faktitabelid (prod_fact_) ja dimensioonid (prod_dim_).
+- README.md - Projekti dokumentatsioon.
+
+### Tehnoloogiad
+- Andmeallikas: Eurostat (API/TSV failid).
+- Andmeladu: Google BigQuery (SQL).
+- Arhitektuur: Medallion (Landing-Staging-Production).
+- Visualiseerimine: Power BI (ühendatud BigQueryga).
+
+### Kuidas kasutada
+1. Jooksuta skriptid järjekorras 01 -> 02 -> 03.
+2. Veendu, et BigQuerys on loodud vastav dataset.
+3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
+<br>
+<br>
+
+## 👤 Autor
 Imre Kuklase – Andmeanalüütik
