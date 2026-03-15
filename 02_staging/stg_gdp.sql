@@ -1,3 +1,12 @@
+/*
+  SKRIPT: stg_gdp.sql
+  EESMÄRK: SKP toorandmete puhastamine ja normaliseerimine.
+  LOOGIKA:
+    1. SPLIT: Eraldame esimesest tulpast ühiku, indikaatori ja riigikoodi.
+    2. UNPIVOT: Teisendame aastate veerud (1975-2024) ridadeks.
+    3. REGEXP: Eemaldame Eurostati märkmed (lipud b, p, d) numbrilistest väärtustest.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_gdp` AS
 WITH raw_split AS (
   SELECT
@@ -6,11 +15,7 @@ WITH raw_split AS (
     TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(3)]) AS country_code,
     * EXCEPT(string_field_0)
   FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.land_gdp`
-  WHERE string_field_0 NOT LIKE '%TIME_PERIOD%'
-    -- Filtreerime välja protsendid, vajame absoluutväärtusi (miljonites)
-    AND (string_field_0 LIKE '%CP_MEUR%' OR string_field_0 LIKE '%CLV%')
-    -- Võtame peamise SKP näitaja (B1GQ)
-    AND string_field_0 LIKE '%B1GQ%'
+  WHERE string_field_0 NOT LIKE '%TIME_PERIOD%' -- Eemaldame päise rea
 ),
 unpivoted AS (
   SELECT * FROM raw_split
@@ -26,9 +31,9 @@ SELECT
   country_code,
   unit,
   na_item,
-  -- Aastate kaardistamine (1975 + (field_nr - 1))
+  -- Dünaamiline aasta arvutus: string_field_36 vastab aastale 2010
   CAST(REGEXP_REPLACE(raw_field, 'string_field_', '') AS INT64) + 1974 AS year,
-  -- Puhastame numbri (eemaldame tühikud ja lipud nagu 'b', 'p', 'd')
+  -- Puhastame väärtuse: eemaldame kõik peale numbrite ja punkti
   SAFE_CAST(REGEXP_REPLACE(value, r'[^0-9.]', '') AS FLOAT64) AS gdp_amount
 FROM unpivoted
-WHERE value NOT LIKE '%:%' AND value IS NOT NULL;
+WHERE value NOT LIKE '%:%' AND value IS NOT NULL; -- Eemaldame puuduvad andmed
