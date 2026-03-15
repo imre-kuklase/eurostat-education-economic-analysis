@@ -1,5 +1,5 @@
 -- Riikide dimensioonitabeli loomine ja täitmine (41 unikaalset üksust)
-CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.dim_country` AS
+CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_country` AS
 SELECT * FROM UNNEST([
   STRUCT('AT' AS country_code, 'Austria' AS country_name_et, 'Austria' AS country_name_en, 'Üksikriik' AS country_type_et, 'Single Country' AS country_type_en),
   ('BE', 'Belgia', 'Belgium', 'Üksikriik', 'Single Country'),
