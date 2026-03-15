@@ -130,5 +130,5 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
 
-## Autor
+#### Autor
 Imre Kuklase – Andmeanalüütik
