@@ -5,7 +5,7 @@ Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja ri
 ## Projekti etapid
 - [x] **I etapp:** Üliõpilaste arv ja struktuur (Eurostat UOE andmed).
 - [x] **II etapp:** Hariduse rahastamise andmete integreerimine.
-- [ ] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
+- [x] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
 - [ ] **IV etapp:** Visualiseerimine Power BI-s.
 
 ## Andmeallikad
