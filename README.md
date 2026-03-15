@@ -1,10 +1,10 @@
-# Euroopa kõrghariduse ja majandusnäitajate analüüs (2005–2024)
+# Euroopa kõrghariduse ja majandusnäitajate analüüs
 
-See projekt analüüsib seoseid kõrghariduse struktuuri (era- vs avalik sektor), hariduse rahastamise ja riikide majanduskasvu vahel.
+Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja riiklikke hariduskulutusi, kasutades Eurostati andmeid. Projekt on üles ehitatud Medallion-arhitektuuri põhimõttel Google BigQuery keskkonnas.
 
 ## Projekti etapid
 - [x] **I etapp:** Üliõpilaste arv ja struktuur (Eurostat UOE andmed).
-- [ ] **II etapp:** Hariduse rahastamise andmete integreerimine.
+- [x] **II etapp:** Hariduse rahastamise andmete integreerimine.
 - [ ] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
 - [ ] **IV etapp:** Visualiseerimine Power BI-s.
 
@@ -13,6 +13,34 @@ See projekt analüüsib seoseid kõrghariduse struktuuri (era- vs avalik sektor)
 Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
 1. **Üliõpilaste arv ja struktuur:** [educ_uoe_enrt01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_enrt01/default/table?lang=en) – hõlmab õppurite arvu riigiti, haridustaseme ja asutuse sektori lõikes.
 2. **Hariduse rahastamine:** [educ_uoe_finf01](https://ec.europa.eu/eurostat/databrowser/view/educ_uoe_finf01/default/table?lang=en) – näitab rahavoogusid allikate (avalik/era) ja saajate (avalik/era asutused) vahel.
+3. **Riikide GDP:** []() - näitab ...
+
+## Arhitektuur ja Andmevoog
+Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvaliteet:
+
+1. **01_landing (Bronze):** Toorandmete laadimine Google Cloud Storage'ist BigQuerysse. Andmeid hoitakse algsel kujul ilma muudatusteta.
+2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
+3. **03_production (Gold):** Lõplik andmemudel (Star Schema). Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
+
+## Failide struktuur
+- 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
+- 02_staging/ - Andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
+- 03_production/ - Lõplikud faktitabelid (prod_fact_) ja dimensioonid (prod_dim_).
+- README.md - Projekti dokumentatsioon.
+
+## Tehnoloogiad
+- Andmeallikas: Eurostat (API/TSV failid).
+- Andmeladu: Google BigQuery (SQL).
+- Arhitektuur: Medallion (Landing-Staging-Production).
+- Visualiseerimine: Power BI (ühendatud BigQueryga).
+
+## Kuidas kasutada
+1. Jooksuta skriptid järjekorras 01 -> 02 -> 03.
+2. Veendu, et BigQuerys on loodud vastav dataset.
+3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
+
+
+## SIIT EDASI HAKKAB OSA, MILLE VAJALIKKUS HINNATA JA SISU KORRIGEERIDA JA TÕSTA VAJADUSEL ÜMBER FAILI SEES
 
 ## Tehniline arhitektuur
 Andmed on laaditud **Google Cloud Storage** bucketist **BigQuery** andmelattu. Andmemudel on ehitatud **Star Schema** põhimõttel.
