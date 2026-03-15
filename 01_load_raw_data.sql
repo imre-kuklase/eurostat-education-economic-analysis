@@ -1,3 +1,4 @@
+-- Õppurite toorandmete laadimine Google Cloud Storage bucketist
 LOAD DATA OVERWRITE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.eurostat_raw`
 FROM FILES (
   format = 'CSV',
