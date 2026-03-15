@@ -1,6 +1,6 @@
-/*
-  SKRIPT: prod_fact_education.sql
-  EESMÄRK: Lõplik faktitabel Power BI jaoks.
+/* SKRIPT: prod_fact_education.sql
+  EESMÄRK: Luua puhas, dublikaatideta faktitabel (Atomic Grain).
+  LOOGIKA: Eemaldame kõik 'Total' koodid, et Power BI summeeriks andmeid dünaamiliselt.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_education` AS
@@ -9,9 +9,14 @@ SELECT
     sector_code,
     isced_level,
     year,
-    sex_code,     
-    worktime_code,  
-    unit_code,      
+    sex_code,
+    worktime_code,
+    unit_code,
     student_count
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education`
-WHERE student_count IS NOT NULL;
+WHERE student_count IS NOT NULL
+  AND sex_code != 'T' -- 1. Eemaldame soo koondsummad (jäävad M ja F)
+  AND worktime_code NOT IN ('Total', 'TOT_FTE') -- 2. Eemaldame töökoormuse koondsummad (jäävad FT ja PT)
+  AND sector_code NOT IN ('TOT_SEC', 'PRV_IND') -- 3. Eemaldame sektorite koondsummad (jäävad PUB, PRV jne)
+  AND isced_level != 'ED5-8' -- 4. Eemaldame haridustasemete koondsummad (jäävad ED5, ED6, ED7, ED8)
+  AND unit_code = 'NR'; -- 5. Veendume, et ühik on arvuline (Number)
