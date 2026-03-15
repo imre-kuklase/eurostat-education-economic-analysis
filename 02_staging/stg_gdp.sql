@@ -1,7 +1,7 @@
 /*
   SKRIPT: stg_gdp.sql
   EESMÄRK: SKP toorandmete puhastamine ja normaliseerimine.
-  LOOGIKA:
+  TRANSFORMATSIOONID:
     1. SPLIT: Eraldame esimesest tulpast ühiku, indikaatori ja riigikoodi.
     2. UNPIVOT: Teisendame aastate veerud (1975-2024) ridadeks.
     3. REGEXP: Eemaldame Eurostati märkmed (lipud b, p, d) numbrilistest väärtustest.
