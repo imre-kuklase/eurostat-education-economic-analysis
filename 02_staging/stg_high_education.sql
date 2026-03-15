@@ -19,10 +19,27 @@ unpivoted AS (
   )
 )
 SELECT 
-  country_code, sector_code, isced_level,
+  country_code,
+  sector_code,
+  isced_level,
   CASE 
     WHEN raw_field = 'string_field_1' THEN 2005
-    -- ... (lisa siia kõik aastad 2005-2022 nagu varem tegid) ...
+    WHEN raw_field = 'string_field_2' THEN 2006
+    WHEN raw_field = 'string_field_3' THEN 2007
+    WHEN raw_field = 'string_field_4' THEN 2008
+    WHEN raw_field = 'string_field_5' THEN 2009
+    WHEN raw_field = 'string_field_6' THEN 2010
+    WHEN raw_field = 'string_field_7' THEN 2011
+    WHEN raw_field = 'string_field_8' THEN 2012
+    WHEN raw_field = 'string_field_9' THEN 2013
+    WHEN raw_field = 'string_field_10' THEN 2014
+    WHEN raw_field = 'string_field_11' THEN 2015
+    WHEN raw_field = 'string_field_12' THEN 2016
+    WHEN raw_field = 'string_field_13' THEN 2017
+    WHEN raw_field = 'string_field_14' THEN 2018
+    WHEN raw_field = 'string_field_15' THEN 2019
+    WHEN raw_field = 'string_field_16' THEN 2020
+    WHEN raw_field = 'string_field_17' THEN 2021
     WHEN raw_field = 'string_field_18' THEN 2022
   END AS year,
   SAFE_CAST(REGEXP_REPLACE(value, r'[^0-9]', '') AS INT64) AS student_count
