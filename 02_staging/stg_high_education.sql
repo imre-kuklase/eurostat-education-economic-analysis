@@ -1,3 +1,12 @@
+/*
+  SKRIPT: stg_high_education.sql
+  EESMÄRK: Üliõpilaste arvu andmete unpivot ja puhastus.
+  TRANSFORMATSIOONID:
+    1. SPLIT: Eraldame metadata (unit, isced11, sector, geo).
+    2. UNPIVOT: Teisendame aastate veerud ridadeks.
+    3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education` AS
 WITH raw_split AS (
   SELECT
