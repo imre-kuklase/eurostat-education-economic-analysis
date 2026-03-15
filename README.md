@@ -45,17 +45,22 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 ### Faktitabelid
 1. **`prod_fact_education`**: Sisaldab numbrilisi väärtusi (`student_count`) ja välisvõtmeid (FK), mis seovad andmed dimensioonidega.
 2. **`prod_fact_finance`**: Sisaldab hariduse rahastamise andmeid miljonites eurodes (`expenditure_amount`) ning välisvõtmeid (FK), mis võimaldavad kulusid analüüsida riikide, sektorite ja haridustasemete lõikes.
+3. **`prod_fact_gdp`**: Sisaldab riikide sisemajanduse koguprodukti (SKP) näitajaid miljonites eurodes (`gdp_amount`) ja välisvõtmeid. See tabel on aluseks hariduskulutuste osakaalu (protsent SKP-st) ja majandusliku efektiivsuse analüüsimiseks.
 
 ### Dimensioonitabelid
 1. **`prod_dim_country`**: Normaliseeritud riiginimed ja regioonide jaotus. Eristab üksikriigid agregaatidest.
 2. **`prod_dim_sector`**: Klassifitseerib õppeasutuse omanikuvormi (Avalik vs Era).
 3. **`prod_dim_isced`**: Määratleb haridustasemed ja sisaldab loogilist sorteerimisjärjestust (`sort_order`).
+4. **`prod_dim_date`**: Koondab perioodid (aastad).
 
 ### Seosed (Entity Relationship)
 - `prod_fact_education.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_education.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
 - `prod_fact_education.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_education.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_finance.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_finance.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
 - `prod_fact_finance.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
+- `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
