@@ -1,3 +1,8 @@
+/*
+  TABEL: prod_dim_sector
+  KIRJELDUS: Sektorite harmoniseerimine haridus- ja finantsandmete vahel.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_sector` AS
 SELECT * FROM UNNEST([
   -- Hariduse koodid (stg_high_education)
