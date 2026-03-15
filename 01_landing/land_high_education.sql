@@ -1,4 +1,9 @@
--- Õppurite toorandmete laadimine Google Cloud Storage bucketist
+/*
+  SKRIPT: land_high_education.sql
+  EESMÄRK: Eurostati üliõpilaste arvu (enrt01) toorandmete laadimine GCS-ist BigQuerysse.
+  FORMAAT: TSV (tab-separated values), metadata esimeses veerus.
+*/
+
 LOAD DATA OVERWRITE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.land_high_education`
 FROM FILES (
   format = 'CSV',
