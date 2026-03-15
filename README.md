@@ -2,6 +2,13 @@
 
 Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja riiklikke hariduskulutusi, kasutades Eurostati andmeid. Projekt on üles ehitatud Medallion-arhitektuuri põhimõttel Google BigQuery keskkonnas.
 
+## Analüütilised fookusküsimused
+Projekt on loodud vastama järgmistele küsimustele:
+- Kuidas korreleerub kõrghariduse rahastamine riigi majandusliku võimekusega (SKP)?
+- Kas erakõrghariduse osakaal riigiti mõjutab majanduslikku edukust?
+- Millised Euroopa riigid investeerivad kõige rohkem ühe üliõpilase kohta?
+- Kuidas on kõrghariduse struktuur ja tudengite arv muutunud võrreldes riikide SKP kasvuga perioodil 2012–2022?
+
 ## Projekti etapid
 - [x] **I etapp:** Üliõpilaste arv ja struktuur (Eurostat UOE andmed).
 - [x] **II etapp:** Hariduse rahastamise andmete integreerimine.
@@ -92,6 +99,11 @@ graph TD
 2. Veendu, et BigQuerys on loodud vastav dataset.
 3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
 
+## Andmekvaliteet ja valideerimine
+Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
+- Sünkroonimine: Kõik kolm andmeallikat on filtreeritud ühisele ajaraamile (2012–2022), et tagada suhtarvude matemaatiline korrektsus.
+- Puhastus: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
+- Normaliseerimine: Toorandmetest on eemaldatud staatilised märkmed (nt lipud 'b', 'p', 'e'), teisendades väärtused puhtalt numbrilisele kujule.
 
 ## Andmemudel (Gold kiht)
 
@@ -117,3 +129,6 @@ graph TD
 - `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
+
+## Autor
+Imre Kuklase – Andmeanalüütik
