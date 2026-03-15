@@ -1,18 +1,19 @@
 /*
   SKRIPT: stg_high_education.sql
-  EESMÄRK: Üliõpilaste arvu andmete unpivot ja puhastus.
-  TRANSFORMATSIOONID:
-    1. SPLIT: Eraldame metadata (unit, sector, isced, geo).
-    2. UNPIVOT: Teisendame aastate veerud ridadeks.
-    3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
+  EESMÄRK: Üliõpilaste arvu andmete täielik laadimine koos kõigi metadata dimensioonidega.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education` AS
 WITH raw_split AS (
   SELECT
-    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(3)]) AS sector_code,  -- PRV jne
-    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(5)]) AS isced_level,  -- ED5 jne
-    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(6)]) AS country_code, -- geo (AL, AT jne)
+    -- Metadata osadeks lammutamine vastavalt TSV päisele
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(0)]) AS freq_code,     -- A (Annual)
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(1)]) AS unit_code,     -- NR (Number)
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(2)]) AS worktime_code, -- FT (Full-time) jne
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(3)]) AS sector_code,   -- PRV, PUB jne
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(4)]) AS sex_code,      -- T (Total), F, M
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(5)]) AS isced_level,   -- ED5, ED6 jne
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(6)]) AS country_code,  -- geo (EE, TR jne)
     * EXCEPT(string_field_0)
   FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.land_high_education`
   WHERE string_field_0 NOT LIKE '%TIME_PERIOD%'
@@ -27,9 +28,13 @@ unpivoted AS (
     )
   )
 )
-SELECT 
+SELECT DISTINCT -- Kasutame DISTINCT-i, et vältida dubleerivaid ridu
   country_code,
+  freq_code,
+  unit_code,
+  worktime_code,
   sector_code,
+  sex_code,
   isced_level,
   CASE 
     WHEN raw_field = 'string_field_1' THEN 2005
@@ -48,6 +53,10 @@ SELECT
     WHEN raw_field = 'string_field_14' THEN 2023
     WHEN raw_field = 'string_field_15' THEN 2024
   END AS year,
+  -- Puhastame väärtuse märkmetest (b, e, d) ja teisendame numbriliseks
   SAFE_CAST(REGEXP_REPLACE(value, r'[^0-9]', '') AS INT64) AS student_count
 FROM unpivoted
-WHERE value NOT LIKE '%:%' AND value IS NOT NULL;
+-- Filtreerime välja tühjad väärtused (Eurostati ":" märk)
+WHERE value NOT LIKE '%:%' 
+  AND value IS NOT NULL
+  AND value != '';
