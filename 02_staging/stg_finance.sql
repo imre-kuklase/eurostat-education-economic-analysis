@@ -1,3 +1,10 @@
+/*
+  SKRIPT: stg_finance.sql
+  EESMÄRK: Hariduskulude andmete unpivot ja puhastus.
+  LOOGIKA: 
+    Sarnaselt hariduse andmetele unpivotime aastad, kuid kasutame FLOAT64 tüüpi, kuna rahalised väärtused võivad sisaldada komakohti.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance` AS
 WITH raw_split AS (
   SELECT
