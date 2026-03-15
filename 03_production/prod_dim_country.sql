@@ -1,4 +1,8 @@
--- Riikide dimensioonitabeli loomine ja täitmine (41 unikaalset üksust)
+/*
+  TABEL: prod_dim_country
+  KIRJELDUS: Riikide nimekiri (ISO koodid, ET/EN nimed ja regioonide eristamine).
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_country` AS
 SELECT * FROM UNNEST([
   STRUCT('AT' AS country_code, 'Austria' AS country_name_et, 'Austria' AS country_name_en, 'Üksikriik' AS country_type_et, 'Single Country' AS country_type_en),
