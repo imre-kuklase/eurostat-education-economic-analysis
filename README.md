@@ -44,7 +44,7 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 
 ### Faktitabelid
 1. **`prod_fact_education`**: Sisaldab numbrilisi väärtusi (`student_count`) ja välisvõtmeid (FK), mis seovad andmed dimensioonidega.
-2. **`prod_fact_finance`**: Sisaldab ...
+2. **`prod_fact_finance`**: Sisaldab hariduse rahastamise andmeid miljonites eurodes (`expenditure_amount`) ning välisvõtmeid (FK), mis võimaldavad kulusid analüüsida riikide, sektorite ja haridustasemete lõikes.
 
 ### Dimensioonitabelid
 1. **`prod_dim_country`**: Normaliseeritud riiginimed ja regioonide jaotus. Eristab üksikriigid agregaatidest.
@@ -58,3 +58,4 @@ Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvalitee
 - `prod_fact_finance.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_finance.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
 - `prod_fact_finance.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
