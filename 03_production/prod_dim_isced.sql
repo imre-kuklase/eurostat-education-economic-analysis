@@ -1,3 +1,8 @@
+/*
+  TABEL: prod_dim_isced
+  KIRJELDUS: Haridustasemed (ISCED 2011 standard) koos sorteerimisjärjekorraga.
+*/
+
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_isced` AS
 SELECT * FROM UNNEST([
   -- KÕRGHARIDUS (ED5-ED8)
