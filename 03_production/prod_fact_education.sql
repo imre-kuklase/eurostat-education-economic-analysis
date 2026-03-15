@@ -13,5 +13,5 @@ SELECT
   year,         -- FK: prod_dim_date
   student_count -- Mõõdik: õppurite arv
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education`
-WHERE year BETWEEN 2012 AND 2024 
+WHERE year BETWEEN 2012 AND 2022
   AND student_count > 0;
