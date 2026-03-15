@@ -1,7 +1,6 @@
 /*
   SKRIPT: prod_fact_education.sql
   EESMÄRK: Lõplik faktitabel Power BI jaoks.
-  MUUDATUSED: Lisatud sex, worktime ja unit koodid filtreerimiseks.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_education` AS
