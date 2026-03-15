@@ -1,6 +1,6 @@
 /*
   TABEL: prod_dim_date
-  KIRJELDUS: Ühtne ajatelg perioodiks 2012-2024.
+  KIRJELDUS: Ühtne ajatelg perioodiks 2012-2022.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_date` AS
@@ -11,4 +11,4 @@ SELECT
     WHEN year <= 2020 THEN '2016-2020'
     ELSE '2021-2024'
   END AS year_period
-FROM UNNEST(GENERATE_ARRAY(2012, 2024)) AS year;
+FROM UNNEST(GENERATE_ARRAY(2012, 2022)) AS year;
