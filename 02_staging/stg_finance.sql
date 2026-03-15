@@ -13,7 +13,8 @@ unpivoted AS (
   UNPIVOT(
     value FOR raw_field IN (
       string_field_1, string_field_2, string_field_3, string_field_4, string_field_5,
-      string_field_6, string_field_7, string_field_8, string_field_9, string_field_10, string_field_11
+      string_field_6, string_field_7, string_field_8, string_field_9, string_field_10, 
+      string_field_11
     )
   )
 )
