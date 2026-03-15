@@ -1,4 +1,4 @@
-# Euroopa kõrghariduse ja majandusnäitajate analüüs
+# Euroopa kõrghariduse ja majandusnäitajate analüüs (2012 - 2024)
 
 Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja riiklikke hariduskulutusi, kasutades Eurostati andmeid. Projekt on üles ehitatud Medallion-arhitektuuri põhimõttel Google BigQuery keskkonnas.
 
