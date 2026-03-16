@@ -44,4 +44,6 @@ SELECT * FROM UNNEST([
   ('MK', 'Põhja-Makedoonia', 'North Macedonia'),
   ('GE', 'Gruusia', 'Georgia'),
   ('LI', 'Liechtenstein', 'Liechtenstein')
-]);
+])
+ORDER BY
+  country_code;
