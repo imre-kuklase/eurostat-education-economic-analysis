@@ -13,4 +13,4 @@ SELECT
   END AS year_period
 FROM UNNEST(GENERATE_ARRAY(2012, 2022)) AS year
 ORDER BY
-  year;;
+  year;
