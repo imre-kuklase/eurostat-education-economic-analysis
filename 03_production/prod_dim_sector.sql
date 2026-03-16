@@ -12,7 +12,7 @@ SELECT * FROM UNNEST([
   -- Finantsi koodid (stg_finance)
   ('S13', 'Valitsemissektor', 'General government', 'Avalik sektor', 'Public sector'),
   ('S1D', 'Muud kodumaised sektorid', 'Other domestic sectors', 'Erasektor', 'Private sector'),
-  ('S1D_OTH', 'Muud erasektori üksused', 'Other private entities', 'Erasektor', 'Private sector')
+  ('S1D_OTH', 'Muud erasektori üksused', 'Other private entities', 'Erasektor', 'Private sector'),
 
   -- Kontrollväärtus / Baasnäitaja (Vajalik osakaalude arvutamiseks)
   ('S1', 'Kogu majandus', 'Total economy', 'Kokku', 'Total')
