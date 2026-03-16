@@ -3,13 +3,22 @@
   KIRJELDUS: Õppurite jahunemine riigiti era- ja avaliku sektori kaupa
   ALLIKAS: stg_high_education
   FILTER: 2012-2022, sünkroniseeritud teiste faktitabelitega.
+
+  MÄRKUS: Sisaldab andmekvaliteedi parandust (Hotfix) Eesti (EE) andmetele 
+  perioodil 2012-2015, kus avaliku ja erasektori sildid olid Eurostati 
+  algallikas vahetuses.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_education` AS
 SELECT 
   country_code,
   isced_level,
-  sector_code,
+  -- "Hotfix" Eesti 2013-2015 sektorite vahetuse jaoks
+  CASE 
+    WHEN country_code = 'EE' AND year < 2016 AND sector_code = 'PUB' THEN 'PRV'
+    WHEN country_code = 'EE' AND year < 2016 AND sector_code = 'PRV' THEN 'PUB'
+    ELSE sector_code 
+  END AS sector_code,
   year,
   student_count
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education`
