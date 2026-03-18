@@ -1,8 +1,8 @@
 /*
   SKRIPT: stg_finance.sql
-  EESMÄRK: Hariduskulude andmete unpivot ja puhastus.
+  EESMÄRK: Hariduskulude andmete depivoteerimine ja puhastus.
   TRANSFORMATSIOONID: 
-    1. SPLIT: Eraldame metadata (sector, isced, geo).
+    1. SPLIT: Eraldame metadata (freq, unit_code, sector_code, isced_level, gountry_code).
     2. UNPIVOT: Teisendame aastate veerud ridadeks.
     3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
 */
@@ -10,6 +10,8 @@
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance` AS
 WITH raw_split AS (
   SELECT
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(0)]) AS freq,
+    TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(1)]) AS unit_code,
     TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(2)]) AS sector_code,
     TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(3)]) AS isced_level,
     TRIM(SPLIT(string_field_0, ',')[SAFE_OFFSET(4)]) AS country_code,
@@ -29,6 +31,8 @@ unpivoted AS (
 )
 SELECT 
   country_code,
+  freq,
+  unit_code,
   sector_code,
   isced_level,
   CASE 
