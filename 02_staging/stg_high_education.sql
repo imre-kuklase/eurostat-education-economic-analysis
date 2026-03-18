@@ -1,6 +1,10 @@
 /*
   SKRIPT: stg_high_education.sql
   EESMÄRK: Üliõpilaste arvu andmete täielik laadimine koos kõigi metadata dimensioonidega.
+  TRANSFORMATSIOONID: 
+    1. SPLIT: Eraldame metadata (freq,unit,worktime,sector,sex,isced11,geo).
+    2. UNPIVOT: Teisendame aastate veerud ridadeks.
+    3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education` AS
