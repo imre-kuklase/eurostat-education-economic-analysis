@@ -13,6 +13,7 @@ CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analy
 SELECT 
   country_code,
   isced_level,
+  'ED5-8' AS isced_level_group,
   -- "Hotfix" Eesti 2013-2015 sektorite vahetuse jaoks
   CASE 
     WHEN country_code = 'EE' AND year < 2016 AND sector_code = 'PUB' THEN 'PRV'
