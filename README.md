@@ -71,9 +71,9 @@ graph TD
     L2 -->|Clean & Unpivot| S2
     L3 -->|Clean & Unpivot| S3
 
-    S1 -->|Filter 2012-2022| F1
-    S2 -->|Filter 2012-2022| F2
-    S3 -->|Filter 2012-2022| F3
+    S1 --> F1
+    S2 --> F2
+    S3 --> F3
 
     %% Seosed dimensioonidega
     D1 -.-> F1 & F2 & F3
