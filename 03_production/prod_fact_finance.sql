@@ -2,7 +2,7 @@
   TABEL: prod_fact_finance
   KIRJELDUS: Hariduse rahastamise kulud miljonites eurodes.
   ALLIKAS: stg_finance
-  FILTER: 2012-2024, sünkroniseeritud teiste faktitabelitega.
+  FILTER: 2012-2022, sünkroniseeritud teiste faktitabelitega.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_finance` AS
