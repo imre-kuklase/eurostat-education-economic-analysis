@@ -81,11 +81,12 @@ graph TD
     D3 -.-> F2 & F3
     D4 -.-> F2 & F3
     D5 -.-> F1
+    D6 -.-> 
 
     %% Klasside määramine stiili jaoks
     class L1,L2,L3 bronze;
     class S1,S2,S3 silver;
-    class F1,F2,F3,D1,D2,D3,D4,D5 gold;
+    class F1,F2,F3,D1,D2,D3,D4,D5,D6 gold;
 ```
 <br>
 
