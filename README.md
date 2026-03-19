@@ -113,6 +113,8 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 2. **`prod_dim_sector`**: Klassifitseerib õppeasutuse omanikuvormi (Avalik vs Era).
 3. **`prod_dim_isced`**: Määratleb haridustasemed ja sisaldab loogilist sorteerimisjärjestust (`sort_order`).
 4. **`prod_dim_date`**: Koondab perioodid (aastad).
+5. **`prod_dim_sex`**: Liigitab õppurid soo järgi.
+6. **`prod_dim_worktime`**:
 
 ### Seosed (Entity Relationship)
 - `prod_fact_education.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
