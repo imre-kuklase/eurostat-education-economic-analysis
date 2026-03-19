@@ -62,7 +62,8 @@ graph TD
         D2[prod_dim_date]
         D3[prod_dim_isced]
         D4[prod_dim_sector]
-        D5[prod_dim_gdp_unit]
+        D5[prod_dim_sex]
+        D6[prod_dim_worktime]
     end
 
     %% Andmevoog (Lineage)
