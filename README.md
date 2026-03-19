@@ -89,6 +89,9 @@ graph TD
     class F1,F2,F3,D1,D2,D3,D4,D5,D6 gold;
 ```
 <br>
+<br>
+<br>
+<br>
 
 ### Andmekvaliteet ja valideerimine
 Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
