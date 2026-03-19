@@ -131,6 +131,7 @@ erDiagram
         string country_code
         string sector_code
         string isced_level
+        string isced_level_group !!!!!!
         int year
         int student_count
     }
@@ -157,13 +158,15 @@ erDiagram
     PROD-DIM-DATE ||--o{ PROD-FACT-FINANCE : "filters"
     PROD-DIM-DATE ||--o{ PROD-FACT-GDP : "filters"
 
-    PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : "isced_level_group filters"
     PROD-DIM-ISCED ||--o{ PROD-FACT-FINANCE : "filters"
 
     PROD-DIM-SECTOR ||--o{ PROD-FACT-EDUCATION : "filters"
     PROD-DIM-SECTOR ||--o{ PROD-FACT-FINANCE : "filters"
 
-    PROD-DIM-GDP-UNIT ||--o{ PROD-FACT-GDP : "filters"
+    PROD-DIM-SEX ||--o{ PROD-FACT-EDUCATION : "filters"
+
+    PROD-DIM-WORKTIME ||--o{ PROD-FACT-EDUCATION : "filters"
 ```
 <br>
 
