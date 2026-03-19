@@ -131,7 +131,7 @@ erDiagram
         string country_code
         string sector_code
         string isced_level
-        string isced_level_group !!!!!!
+        string isced_level_group
         int year
         int student_count
     }
