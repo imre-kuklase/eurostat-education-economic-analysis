@@ -80,8 +80,8 @@ graph TD
     D2 -.-> F1 & F2 & F3
     D3 -.-> F2 & F3
     D4 -.-> F2 & F3
-    D5 -.-> F1
-    D6 -.-> 
+    D5 -.-> F3
+    D6 -.-> F3
 
     %% Klasside määramine stiili jaoks
     class L1,L2,L3 bronze;
