@@ -13,7 +13,8 @@
         - 'c': Confidential - Salastatud. Ärihuvide / riikliku julgeoleku või muu kaitseks andmete salastatamine. (nt. kui riigis on ainult üks erakool, võidakse andmed salastada, et mitte avaldada kooli ärisaladust)
         - 'n': Not significant - Statistiliselt mitteoluline. Väärtus on nii väike, et ümardub nulliks.
         - 'z': Not applicable - Pole asjakohane / ei kohaldata. Viitab sellele, et kontseptsioon või andmepunkt ei ole antud riigi või sektori puhul üldse võimalik.
-        - ':': Missing value - Puuduv väärtus (filtreeritakse välja.
+        - ':': Missing value - Puuduv väärtus (filtreeritakse välja).
+        - 'i': Additional information - Täiendav informatsioon.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance` AS
