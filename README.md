@@ -31,7 +31,7 @@ Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
 Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvaliteet:
 1. **01_landing (Bronze):** Toorandmete laadimine Google Cloud Storage'ist BigQuerysse. Andmeid hoitakse algsel kujul ilma muudatusteta.
 2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
-3. **03_production (Gold):** Lõplik andmemudel (Star Schema). Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
+3. **03_production (Gold):** Lõplik andmemudel. Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
 <br>
 
 ```mermaid
@@ -184,21 +184,21 @@ erDiagram
 Sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsioon ning juhised andmetöötluse protsessi (ETL) käivitamiseks ja reprodutseerimiseks.
 
 ### Failide struktuur
-- 01_landing/ - Skriptid toorandmete laadimiseks (land_ tabelid).
-- 02_staging/ - Andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
-- 03_production/ - Lõplikud faktitabelid (prod_fact_) ja dimensioonid (prod_dim_).
+- 01_landing/ - Bronze tase, skriptid toorandmete laadimiseks (land_ tabelid).
+- 02_staging/ - Silver tase, andmete puhastamise ja unpivotimise loogika (stg_ tabelid).
+- 03_production/ - Gold tase, lõplikud faktitabelid (prod_fact_) ja dimensioonid (prod_dim_).
 - README.md - Projekti dokumentatsioon.
 
 ### Tehnoloogiad
 - Andmeallikas: Eurostat (API/TSV failid).
 - Andmeladu: Google BigQuery (SQL).
-- Arhitektuur: Medallion (Landing-Staging-Production).
+- Arhitektuur: Medallion (Landing-Staging-Production / Bronze-Silver-Gold).
 - Visualiseerimine: Power BI (ühendatud BigQueryga).
 
 ### Kuidas kasutada
 1. Jooksuta skriptid järjekorras 01 -> 02 -> 03.
 2. Veendu, et BigQuerys on loodud vastav dataset.
-3. Power BI-s kasuta DirectQuery või Import režiimi 03_production kihi tabelite peal.
+3. Power BI-s kasuta DirectQuery või Import režiimi Production (Gold) kihi tabelite peal.
 <br>
 <br>
 
