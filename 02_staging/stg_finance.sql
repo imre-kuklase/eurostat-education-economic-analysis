@@ -10,6 +10,10 @@
         - 'd': Definition differs - Definitsioon erineb. Andmed ei vasta 100% standardile, aga on võrreldavad (Märguanne, et riik raporteerib midagi veidi teisiti)
         - 'e': Estimated - Hinnatud. Eurostat või riik on puuduva osa tuletanud mudelitega (Kasutatakse päris küsitlusandmete puudumisel)
         - 'u': Low reliability - Väike usaldusväärsus. Valimi suurus oli liiga väike (Tuleb olla ettevaatlik ridade tõlgendamisel)
+        - 'u': Confidential - Salastatud. Ärihuvide / riikliku julgeoleku või muu kaitseks andmete salastatamine. (nt. kui riigis on ainult üks erakool, võidakse andmed salastada, et mitte avaldada kooli ärisaladust)
+        - 'n': Not significant - Statistiliselt mitteoluline. Väärtus on nii väike, et ümardub nulliks.
+        - 'z': Not applicable - Pole asjakohane. Viitab sellele, et kontseptsioon või andmepunkt ei ole antud riigi või sektori puhul üldse võimalik.
+        - ':': Missing value - Puuduv väärtus.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance` AS
