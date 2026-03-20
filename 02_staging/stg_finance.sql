@@ -5,6 +5,11 @@
     1. SPLIT: Eraldame metadata (freq, unit, sector, isced11, geo).
     2. UNPIVOT: Teisendame aastate veerud ridadeks.
     3. REGEXP: Eemaldame Eurostati märkmed (nagu 'b' - break, 'e' - estimate).
+        - 'b': Break in time series - Aegrea katkemine. Metoodika või andmeallikas on muutunud (Selgitab järske hüppeid graafikul)
+        - 'p': Provisional - Esialgne. Need on värsked andmed, mis võivad hiljem korrigeeruda (Tavaliselt viimase aasta andmete juures)
+        - 'd': Definition differs - Definitsioon erineb. Andmed ei vasta 100% standardile, aga on võrreldavad (Märguanne, et riik raporteerib midagi veidi teisiti)
+        - 'e': Estimated - Hinnatud. Eurostat või riik on puuduva osa tuletanud mudelitega (Kasutatakse päris küsitlusandmete puudumisel)
+        - 'u': Low reliability - Väike usaldusväärsus. Valimi suurus oli liiga väike (Tuleb olla ettevaatlik ridade tõlgendamisel)
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance` AS
