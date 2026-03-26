@@ -100,6 +100,10 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - **Sünkroonimine**: Kõik kolm andmeallikat on filtreeritud ühisele ajaraamile (2012–2022), et tagada suhtarvude matemaatiline korrektsus.
 - **Puhastus**: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
 - **Normaliseerimine**: Toorandmetest on **eraldatud** märkmed (nt lipud 'b', 'p', 'e') iseseisvasse veergu `flag_code`. See võimaldab teisendada väärtused puhtalt numbrilisele kujule (`FLOAT64`/`INT64`), säilitades samal ajal metaandmed analüütiliseks tõlgendamiseks läbi `prod_dim_flags` dimensiooni.
+- **Andmete granulaarsuse sünkroonimine**: Kuna Eurostati finantsandmed (`finance`) ja haridusandmed (`education`) on erineva detailsusastmega, rakendati järgmist loogikat:
+-- `prod_fact_finance` on piiratud agregaat-tasemele `ED5-8`.
+-- `prod_dim_isced` dimensiooni lisati vastav agregaat-rida, et võimaldada seost (`Relationship`) faktitabeliga.
+-- Power BI-s kasutatakse DAX-mõõdikuid (nt `ALL` või `REMOVEFILTERS`), et sünkroniseerida tudengite arv finantsandmetega, kui vaadeldakse suhtarve (kulu õppuri kohta).
 <br>
 
 ### Andmekvaliteet ja metodoloogilised tähelepanekud
@@ -113,13 +117,13 @@ Analüüsi käigus tuvastati ja lahendati järgmised kriitilised andmeprobleemid
 
 ### Faktitabelid
 1. **`prod_fact_education`**: Sisaldab numbrilisi väärtusi (`student_count`) ja välisvõtmeid (FK), mis seovad andmed dimensioonidega.
-2. **`prod_fact_finance`**: Sisaldab hariduse rahastamise andmeid miljonites eurodes (`expenditure_amount`) ning välisvõtmeid (FK), mis võimaldavad kulusid analüüsida riikide, sektorite ja haridustasemete lõikes.
+2. **`prod_fact_finance`**: Sisaldab hariduse rahastamise andmeid miljonites eurodes (`expenditure_amount`) ning välisvõtmeid (FK), mis võimaldavad kulusid analüüsida riikide ja sektorite lõikes. Erinevalt teistest faktitabelitest on finantsandmed kättesaadavad ainult koondtasemel ED5-8, mistõttu on see tabel filtreeritud vastavalt.
 3. **`prod_fact_gdp`**: Sisaldab riikide sisemajanduse koguprodukti (SKP) näitajaid miljonites eurodes (`gdp_amount`) ja välisvõtmeid. See tabel on aluseks hariduskulutuste osakaalu (protsent SKP-st) ja majandusliku efektiivsuse analüüsimiseks.
 
 ### Dimensioonitabelid
 1. **`prod_dim_country`**: Normaliseeritud riiginimed ja regioonide jaotus. Eristab üksikriigid agregaatidest.
 2. **`prod_dim_sector`**: Klassifitseerib õppeasutuse omanikuvormi (Avalik vs Era).
-3. **`prod_dim_isced`**: Määratleb haridustasemed ja sisaldab loogilist sorteerimisjärjestust (`sort_order`).
+3. **`prod_dim_isced`**: Määratleb haridustasemed ja sisaldab loogilist sorteerimisjärjestust (`sort_order`). Lisatud agregaat-tase ED5-8 (Kõrgharidus kokku), et sünkroniseerida haridusandmed finantsandmete jämedama granulaarsusega.
 4. **`prod_dim_date`**: Koondab perioodid (aastad).
 5. **`prod_dim_sex`**: Liigitab õppurid soo järgi.
 6. **`prod_dim_worktime`**: Eristab õppureid õppekoormuse järgi (täis- või osakoormus). Võimaldab filtreerida andmeid, et tagada võrreldavus riikide vahel.
