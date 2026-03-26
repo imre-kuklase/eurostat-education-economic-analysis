@@ -1,6 +1,6 @@
 /*
   TABEL: prod_dim_isced
-  KIRJELDUS: Haridustasemed koos agregaat-kategooriaga finantsanalüüsi jaoks.
+  KIRJELDUS: Haridustasemed.
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_dim_isced` AS
