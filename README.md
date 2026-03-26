@@ -65,6 +65,7 @@ graph TD
         D5[prod_dim_sex]
         D6[prod_dim_worktime]
         D7[prod_dim_flags]
+        D3[prod_dim_isced_groups]
     end
 
     %% Andmevoog (Lineage)
@@ -79,16 +80,17 @@ graph TD
     %% Seosed dimensioonidega
     D1 -.-> F1 & F2 & F3
     D2 -.-> F1 & F2 & F3
-    D3 -.-> F2 & F3
+    D3 -.-> F3
     D4 -.-> F2 & F3
     D5 -.-> F3
     D6 -.-> F3
     D7 -.-> F1 & F2 & F3
+    D8 -.-> F2 & D3
 
     %% Klasside määramine stiili jaoks
     class L1,L2,L3 bronze;
     class S1,S2,S3 silver;
-    class F1,F2,F3,D1,D2,D3,D4,D5,D6,D7 gold;
+    class F1,F2,F3,D1,D2,D3,D4,D5,D6,D7,D8 gold;
 ```
 <br>
 <br>
