@@ -28,7 +28,7 @@ WHERE
   -- Regiooni ja riikide välistamine
   country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
   AND country_code NOT LIKE 'EU%' -- Välistame summaarse Euroopa Liidu
-  AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK',UA)
+  AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK','UA')
   -- Filtreeritud ainult kõrghariduse tasemed
   AND isced_level IN ('ED5','ED6','ED7','ED8')
   -- Fookus: Avalik vs Erasektor
