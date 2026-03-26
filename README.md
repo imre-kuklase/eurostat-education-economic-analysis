@@ -101,9 +101,9 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - **Puhastus**: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
 - **Normaliseerimine**: Toorandmetest on **eraldatud** märkmed (nt lipud 'b', 'p', 'e') iseseisvasse veergu `flag_code`. See võimaldab teisendada väärtused puhtalt numbrilisele kujule (`FLOAT64`/`INT64`), säilitades samal ajal metaandmed analüütiliseks tõlgendamiseks läbi `prod_dim_flags` dimensiooni.
 - **Andmete granulaarsuse sünkroonimine**: Kuna Eurostati finantsandmed (`finance`) ja haridusandmed (`education`) on erineva detailsusastmega, rakendati järgmist loogikat:
-    - `prod_fact_finance` on piiratud agregaat-tasemele `ED5-8`.
-    - `prod_dim_isced` dimensiooni lisati vastav agregaat-rida, et võimaldada seost (`Relationship`) faktitabeliga.
-    - Power BI-s kasutatakse DAX-mõõdikuid (nt `ALL` või `REMOVEFILTERS`), et sünkroniseerida tudengite arv finantsandmetega, kui vaadeldakse suhtarve (kulu õppuri kohta).
+  * `prod_fact_finance` on piiratud agregaat-tasemele `ED5-8`.
+  * `prod_dim_isced` dimensiooni lisati vastav agregaat-rida, et võimaldada seost (`Relationship`) faktitabeliga.
+  - Power BI-s kasutatakse DAX-mõõdikuid (nt `ALL` või `REMOVEFILTERS`), et sünkroniseerida tudengite arv finantsandmetega, kui vaadeldakse suhtarve (kulu õppuri kohta).
 <br>
 
 ### Andmekvaliteet ja metodoloogilised tähelepanekud
