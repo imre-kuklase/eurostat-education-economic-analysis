@@ -161,26 +161,26 @@ erDiagram
 
     %% Dimensioonitabelid
     PROD-DIM-COUNTRY ||--o{ PROD-FACT-EDUCATION : ""
-    PROD-DIM-COUNTRY ||--o{ PROD-FACT-FINANCE : "filters"
-    PROD-DIM-COUNTRY ||--o{ PROD-FACT-GDP : "filters"
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-FINANCE : ""
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-GDP : ""
 
-    PROD-DIM-DATE ||--o{ PROD-FACT-EDUCATION : "filters"
-    PROD-DIM-DATE ||--o{ PROD-FACT-FINANCE : "filters"
-    PROD-DIM-DATE ||--o{ PROD-FACT-GDP : "filters"
+    PROD-DIM-DATE ||--o{ PROD-FACT-EDUCATION : ""
+    PROD-DIM-DATE ||--o{ PROD-FACT-FINANCE : ""
+    PROD-DIM-DATE ||--o{ PROD-FACT-GDP : ""
 
     PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : "isced_level_group filters"
-    PROD-DIM-ISCED ||--o{ PROD-FACT-FINANCE : "filters"
+    PROD-DIM-ISCED ||--o{ PROD-FACT-FINANCE : ""
 
-    PROD-DIM-SECTOR ||--o{ PROD-FACT-EDUCATION : "filters"
-    PROD-DIM-SECTOR ||--o{ PROD-FACT-FINANCE : "filters"
+    PROD-DIM-SECTOR ||--o{ PROD-FACT-EDUCATION : ""
+    PROD-DIM-SECTOR ||--o{ PROD-FACT-FINANCE : ""
 
-    PROD-DIM-SEX ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-SEX ||--o{ PROD-FACT-EDUCATION : ""
 
-    PROD-DIM-WORKTIME ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-WORKTIME ||--o{ PROD-FACT-EDUCATION : ""
 
-    PROD-DIM-FLAGS ||--o{ PROD-FACT-EDUCATION : "filters"
-    PROD-DIM-FLAGS ||--o{ PROD-FACT-FINANCE : "filters"
-    PROD-DIM-FLAGS ||--o{ PROD-FACT-GDP : "filters"
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-EDUCATION : ""
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-FINANCE : ""
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-GDP : ""
 ```
 <br>
 
