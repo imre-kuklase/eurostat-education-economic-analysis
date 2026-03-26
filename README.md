@@ -116,8 +116,8 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 3. **`prod_dim_isced`**: Määratleb haridustasemed ja sisaldab loogilist sorteerimisjärjestust (`sort_order`).
 4. **`prod_dim_date`**: Koondab perioodid (aastad).
 5. **`prod_dim_sex`**: Liigitab õppurid soo järgi.
-6. **`prod_dim_worktime`**:
-7. **`prod_dim_flags`**:
+6. **`prod_dim_worktime`**: Eristab õppureid õppekoormuse järgi (täis- või osakoormus). Võimaldab filtreerida andmeid, et tagada võrreldavus riikide vahel.
+7. **`prod_dim_flags`**: Sisaldab Eurostati andmekvaliteedi märkeid (nt metoodika muutus, esialgsed või hinnangulised väärtused). See dimensioon on kriitiline "müra" selgitamiseks graafikutel (nt järsud hüpped trendides).
 
 ### Seosed (Entity Relationship)
 - `prod_fact_education.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
