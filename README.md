@@ -127,9 +127,9 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
-- `prod_fact_education.flag_code` <-> prod_dim_flags.flag_code` (Many-to-One)
-- `prod_fact_finance.flag_code` <-> prod_dim_flags.flag_code` (Many-to-One)
-- `prod_fact_gdp.flag_code` <-> prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_education.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_finance.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_gdp.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
 <br>
 
 ```mermaid
