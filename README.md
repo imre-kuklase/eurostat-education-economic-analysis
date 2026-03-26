@@ -177,6 +177,10 @@ erDiagram
     PROD-DIM-SEX ||--o{ PROD-FACT-EDUCATION : "filters"
 
     PROD-DIM-WORKTIME ||--o{ PROD-FACT-EDUCATION : "filters"
+
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-FINANCE : "filters"
+    PROD-DIM-FLAGS ||--o{ PROD-FACT-GDP : "filters"
 ```
 <br>
 
