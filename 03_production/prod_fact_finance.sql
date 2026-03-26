@@ -7,11 +7,12 @@
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_finance` AS
 SELECT 
-  country_code,      -- FK: prod_dim_country
-  sector_code,       -- FK: prod_dim_sector
-  isced_level,       -- FK: prod_dim_isced
-  year,              -- FK: prod_dim_date
-  expenditure_amount -- Mõõdik: kulu miljonites eurodes
+  country_code,         -- FK: prod_dim_country
+  sector_code,          -- FK: prod_dim_sector
+  isced_level,          -- FK: prod_dim_isced
+  year,                 -- FK: prod_dim_date
+  expenditure_amount,   -- Mõõdik: kulu miljonites eurodes
+  flag_code             -- Mõõdik: kande märge
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance`
 WHERE year BETWEEN 2012 AND 2022
   AND expenditure_amount > 0;
