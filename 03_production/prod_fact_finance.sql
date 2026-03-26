@@ -14,10 +14,11 @@ SELECT
   expenditure_amount,   -- Mõõdik: kulu miljonites eurodes
   flag_code             -- Mõõdik: kande märge
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance`
-WHERE year BETWEEN 2012 AND 2022
+WHERE 
+  year BETWEEN 2012 AND 2022
   AND expenditure_amount > 0
   AND sector_code IN ('S13', 'S1D')
-  AND isced_level = 'ED5-8';
-  AND   country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
+  AND isced_level = 'ED5-8'
+  AND country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
   AND country_code NOT LIKE 'EU%' -- Välistame summaarse Euroopa Liidu
-  AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK','UA')
+  AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK','UA');
