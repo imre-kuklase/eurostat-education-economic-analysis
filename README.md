@@ -138,13 +138,14 @@ Analüüsi käigus tuvastati ja lahendati järgmised kriitilised andmeprobleemid
 - `prod_fact_education.year` -> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_finance.country_code` -> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_finance.sector_code` -> `prod_dim_sector.sector_code` (Many-to-One)
-- `prod_fact_finance.isced_level` -> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_finance.isced_level` -> `prod_dim_isced_groups.isced_level_group` (Many-to-One)
 - `prod_fact_finance.year` -> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` -> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` -> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_education.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
 - `prod_fact_finance.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
 - `prod_fact_gdp.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_dim_isced.isced_level` -> `prod_dim_isced_groups.isced_level_group` (Many-to-One)
 <br>
 
 ```mermaid
@@ -181,8 +182,8 @@ erDiagram
     PROD-DIM-DATE ||--o{ PROD-FACT-FINANCE : ""
     PROD-DIM-DATE ||--o{ PROD-FACT-GDP : ""
 
-    PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : "isced_level_group filters"
-    PROD-DIM-ISCED ||--o{ PROD-FACT-FINANCE : ""
+    PROD-DIM-ISCED ||--o{ PROD-FACT-EDUCATION : ""
+    PROD-DIM-ISCED-GROUPS ||--o{ PROD-FACT-FINANCE : ""
 
     PROD-DIM-SECTOR ||--o{ PROD-FACT-EDUCATION : ""
     PROD-DIM-SECTOR ||--o{ PROD-FACT-FINANCE : ""
