@@ -160,7 +160,7 @@ erDiagram
     }
 
     %% Dimensioonitabelid
-    PROD-DIM-COUNTRY ||--o{ PROD-FACT-EDUCATION : "filters"
+    PROD-DIM-COUNTRY ||--o{ PROD-FACT-EDUCATION
     PROD-DIM-COUNTRY ||--o{ PROD-FACT-FINANCE : "filters"
     PROD-DIM-COUNTRY ||--o{ PROD-FACT-GDP : "filters"
 
