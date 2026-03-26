@@ -16,5 +16,5 @@ SELECT
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance`
 WHERE year BETWEEN 2012 AND 2022
   AND expenditure_amount > 0
-  AND sector_code IN ('S13', 'S1D')
+  AND sector_code IN ('S13', 'S1D', 'S1D_OTH')
   AND isced_level = 'ED5-8';
