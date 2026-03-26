@@ -26,7 +26,7 @@ SELECT
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education`
 WHERE
   -- Regiooni ja riikide välistamine
-  AND country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
+  country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
   AND country_code NOT LIKE 'EU%' -- Välistame summaarse Euroopa Liidu
   AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK',UA)
   -- Filtreeritud ainult kõrghariduse tasemed
