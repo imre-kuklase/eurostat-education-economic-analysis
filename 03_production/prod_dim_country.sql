@@ -43,7 +43,9 @@ SELECT * FROM UNNEST([
   ('ME', 'Montenegro', 'Montenegro'),
   ('MK', 'Põhja-Makedoonia', 'North Macedonia'),
   ('GE', 'Gruusia', 'Georgia'),
-  ('LI', 'Liechtenstein', 'Liechtenstein')
+  ('LI', 'Liechtenstein', 'Liechtenstein'),
+  ('UA', 'Ukraina', 'Ukraine'),
+  ('XK', 'Kosovo', 'Kosovo')
 ])
 ORDER BY
   country_code;
