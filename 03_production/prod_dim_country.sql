@@ -35,17 +35,9 @@ SELECT * FROM UNNEST([
   ('SE', 'Rootsi', 'Sweden'),
   ('SI', 'Sloveenia', 'Slovenia'),
   ('SK', 'Slovakkia', 'Slovakia'),
-  ('UK', 'Ühendkuningriik', 'United Kingdom'),
   ('RS', 'Serbia', 'Serbia'),
   ('BA', 'Bosnia ja Hertsegoviina', 'Bosnia and Herzegovina'),
-  ('TR', 'Türgi', 'Turkey'),
-  ('AL', 'Albaania', 'Albania'),
-  ('ME', 'Montenegro', 'Montenegro'),
-  ('MK', 'Põhja-Makedoonia', 'North Macedonia'),
-  ('GE', 'Gruusia', 'Georgia'),
-  ('LI', 'Liechtenstein', 'Liechtenstein'),
-  ('UA', 'Ukraina', 'Ukraine'),
-  ('XK', 'Kosovo', 'Kosovo')
+  ('TR', 'Türgi', 'Turkey')
 ])
 ORDER BY
   country_code;
