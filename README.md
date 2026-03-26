@@ -117,6 +117,7 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 4. **`prod_dim_date`**: Koondab perioodid (aastad).
 5. **`prod_dim_sex`**: Liigitab õppurid soo järgi.
 6. **`prod_dim_worktime`**:
+7. **`prod_dim_flags`**:
 
 ### Seosed (Entity Relationship)
 - `prod_fact_education.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
