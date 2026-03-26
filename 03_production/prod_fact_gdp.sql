@@ -21,3 +21,4 @@ WHERE
   AND gdp_amount > 0 -- Välistame puuduvad või vigased kirjed
   AND country_code NOT LIKE 'EA%' -- Välistame summaarse Euro ala
   AND country_code NOT LIKE 'EU%' -- Välistame summaarse Euroopa Liidu
+  AND country_code NOT IN ('AL','GE','XK','LI','ME','MK','UK',UA)
