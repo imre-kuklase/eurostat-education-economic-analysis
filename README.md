@@ -126,19 +126,19 @@ Analüüsi käigus tuvastati ja lahendati järgmised kriitilised andmeprobleemid
 7. **`prod_dim_flags`**: Sisaldab Eurostati andmekvaliteedi märkeid (nt metoodika muutus, esialgsed või hinnangulised väärtused). See dimensioon on kriitiline "müra" selgitamiseks graafikutel (nt järsud hüpped trendides).
 
 ### Seosed (Entity Relationship)
-- `prod_fact_education.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
-- `prod_fact_education.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
-- `prod_fact_education.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
-- `prod_fact_education.year` <-> `prod_dim_date.year` (Many-to-One)
-- `prod_fact_finance.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
-- `prod_fact_finance.sector_code` <-> `prod_dim_sector.sector_code` (Many-to-One)
-- `prod_fact_finance.isced_level` <-> `prod_dim_isced.isced_level` (Many-to-One)
-- `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
-- `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
-- `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
-- `prod_fact_education.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
-- `prod_fact_finance.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
-- `prod_fact_gdp.flag_code` <-> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_education.country_code` -> `prod_dim_country.country_code` (Many-to-One)
+- `prod_fact_education.sector_code` -> `prod_dim_sector.sector_code` (Many-to-One)
+- `prod_fact_education.isced_level` -> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_education.year` -> `prod_dim_date.year` (Many-to-One)
+- `prod_fact_finance.country_code` -> `prod_dim_country.country_code` (Many-to-One)
+- `prod_fact_finance.sector_code` -> `prod_dim_sector.sector_code` (Many-to-One)
+- `prod_fact_finance.isced_level` -> `prod_dim_isced.isced_level` (Many-to-One)
+- `prod_fact_finance.year` -> `prod_dim_date.year` (Many-to-One)
+- `prod_fact_gdp.country_code` -> `prod_dim_country.country_code` (Many-to-One)
+- `prod_fact_gdp.year` -> `prod_dim_date.year` (Many-to-One)
+- `prod_fact_education.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_finance.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
+- `prod_fact_gdp.flag_code` -> `prod_dim_flags.flag_code` (Many-to-One)
 <br>
 
 ```mermaid
