@@ -21,7 +21,8 @@ SELECT
     ELSE sector_code 
   END AS sector_code,
   year,
-  student_count
+  student_count,
+  flag_code
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_high_education`
 WHERE
   -- Regiooni koondridade välistamine
