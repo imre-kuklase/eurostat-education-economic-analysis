@@ -65,7 +65,7 @@ graph TD
         D5[prod_dim_sex]
         D6[prod_dim_worktime]
         D7[prod_dim_flags]
-        D3[prod_dim_isced_groups]
+        D8[prod_dim_isced_groups]
     end
 
     %% Andmevoog (Lineage)
