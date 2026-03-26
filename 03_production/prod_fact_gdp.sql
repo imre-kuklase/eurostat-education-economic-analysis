@@ -11,7 +11,8 @@ SELECT
   year,
   unit AS unit_code,  
   na_item, 
-  gdp_amount
+  gdp_amount,
+  flag_code
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_gdp`
 WHERE 
   year BETWEEN 2012 AND 2022 
