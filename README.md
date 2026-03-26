@@ -101,6 +101,12 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - Puhastus: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
 - Normaliseerimine: Toorandmetest on eemaldatud staatilised märkmed (nt lipud 'b', 'p', 'e'), teisendades väärtused puhtalt numbrilisele kujule.
 <br>
+
+### Andmekvaliteet ja metodoloogilised tähelepanekud
+Analüüsi käigus tuvastati ja lahendati järgmised kriitilised andmeprobleemid:
+- **Eesti (EE) 2013–2015 sildistamise viga haridusandmetes**: Algallikas (Eurostat) olid nendel aastatel avaliku ja erasektori sildid vahetuses. Rakendatud on SQL-põhine korrektsioon (prod_fact_education tabelis), et tagada trendijoonte järjepidevus.
+- **Ungari ja Soome metoodilised nihked haridusandmetes**: Nendes riikides toimusid suured hüpped avalikust erasektorisse (vastavalt 2022 ja 2015), mis on tingitud juriidilistest reformidest (kõrgkoolide siirdumine sihtasutuste alla). Need on tähistatud flag_code = 'b' (metoodika muutus) märgisega.
+<br>
 <br>
 
 ## 📊 Andmemudel (Gold kiht)
