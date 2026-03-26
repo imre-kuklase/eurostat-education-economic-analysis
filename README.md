@@ -30,7 +30,7 @@ Analüüsis kasutatakse **Eurostat** avalikke andmebaase:
 ## 🏗️ Arhitektuur ja Andmevoog
 Andmetöötlus on jaotatud kolme kihti, et tagada skaleeritavus ja andmekvaliteet:
 1. **01_landing (Bronze):** Toorandmete laadimine Google Cloud Storage'ist BigQuerysse. Andmeid hoitakse algsel kujul ilma muudatusteta.
-2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil.
+2. **02_staging (Silver):** Andmete puhastamine ja transformatsioon. Siin toimub aastate unpivot-protsess, andmetüüpide teisendamine (String -> Float/Int) ning vigaste kirjete eemaldamine REGEXP abil. Eurostati andmed sisaldavad metaandmeid, mis on eraldatud flag_code veergu.
 3. **03_production (Gold):** Lõplik andmemudel. Selles kihis asuvad puhastatud faktitabelid ja dimensioonid, mis on optimeeritud Power BI raportite jaoks.
 <br>
 
@@ -127,6 +127,9 @@ Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
 - `prod_fact_finance.year` <-> `prod_dim_date.year` (Many-to-One)
 - `prod_fact_gdp.country_code` <-> `prod_dim_country.country_code` (Many-to-One)
 - `prod_fact_gdp.year` <-> `prod_dim_date.year` (Many-to-One)
+- `prod_fact_education.flag_code <-> prod_dim_flags.flag_code (Many-to-One)
+- `prod_fact_finance.flag_code <-> prod_dim_flags.flag_code (Many-to-One)
+- `prod_fact_gdp.flag_code <-> prod_dim_flags.flag_code (Many-to-One)
 <br>
 
 ```mermaid
