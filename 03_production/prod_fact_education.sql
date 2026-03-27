@@ -37,7 +37,7 @@ WHERE
   AND sex_code = 'T'
   AND worktime_code = 'TOTAL'
   -- Uurimustöö ajaline raam
-  AND year BETWEEN 2012 AND 2022
+  AND year BETWEEN 2013 AND 2022
 ORDER BY
   year,
   country_code,
