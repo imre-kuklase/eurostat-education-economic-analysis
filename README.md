@@ -15,7 +15,7 @@ Projekt on loodud vastama järgmistele küsimustele:
 - [x] **I etapp:** Üliõpilaste arv ja struktuur (Eurostat UOE andmed).
 - [x] **II etapp:** Hariduse rahastamise andmete integreerimine.
 - [x] **III etapp:** Majandusnäitajate (SKP kasv) lisamine ja korrelatsioonianalüüs.
-- [ ] **IV etapp:** Visualiseerimine Power BI-s.
+- [x] **IV etapp:** Visualiseerimine Power BI-s.
 <br>
 <br>
 
@@ -227,13 +227,20 @@ Sektsioonis on kirjeldatud projekti tehniline teostus, failide organisatsioon ni
 <br>
 
 ## 📈 Analüüs ja Visualiseerimine
-Ülevaade valminud raportist ja peamistest analüütilistest mõõdikutest.
+Raporti eesmärk on pakkuda interaktiivset vaadet Euroopa kõrghariduse rahastusmudelitele, keskendudes riikidevahelisele võrreldavusele ja 10-aastasele dünaamikale (2013–2022).
 
-### Peamised DAX mõõdikud
-$$Exp \% \text{ of GDP} = DIVIDE([Total Exp], CALCULATE([Total GDP], ALL(dim_isced)), 0)$$
+### Analüütiline loogika (DAX)
+Kogu raporti dünaamika ja andmete sünkroniseerimine on üles ehitatud **21 spetsiaalselt loodud DAX-mõõdikule**. Need mõõdikud on jaotatud kolme peamisse kategooriasse:
+- **Efektiivsusmõõdikud**: Kaalutud keskmised investeeringud ühe üliõpilase kohta (EUR), mis on normaliseeritud vastavalt riikide majanduslikule võimekusele.
+- **Kasvuindeksid**: Dünaamilised trendimõõdikud (baasaasta 2013 = 100), mis võimaldavad ühel teljel võrrelda SKP, kogurahastuse ja tudengite arvu muutust.
+- **Struktuursed näitajad**: Avaliku ja erasektori osakaalude ning institutsionaalsete nihete arvutused (protsendipunktides).
 
 ### Dashboardi ülevaade
-![Dashboard](images/dashboard_main.png)
+Raport koosneb neljast strateegilisest analüüsilehest:
+1. **Q1: Investeeringute üldpilt** – Majandusliku suutlikkuse ja hariduskulude korrelatsioonianalüüs.
+2. **Q2: Erasektori roll ja struktuur** – Institutsionaalne jaotus ja erasektori panuse analüüs riigiti.
+3. **Q3: Haridussüsteemi efektiivsus** – Pingerida ja võrdlus: reaalne investeering ühe õppuri kohta vs regiooni keskmine.
+4. **Q4: Dünaamika ja trendid** – Kõrghariduse pikaajaline areng võrdluses üldise majanduskasvuga (2013–2022).
 
 <br>
 <br>
