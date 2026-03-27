@@ -7,7 +7,7 @@ CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analy
 SELECT 
   year,
   CASE 
-    WHEN year <= 2015 THEN '2013-2017'
+    WHEN year <= 2015 THEN '2013-2016'
     WHEN year <= 2020 THEN '2017-2020'
     ELSE '2021-2022'
   END AS year_period
