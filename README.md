@@ -241,6 +241,9 @@ Raport koosneb neljast strateegilisest analüüsilehest:
 2. **Q2: Erasektori roll ja struktuur** – Institutsionaalne jaotus ja erasektori panuse analüüs riigiti.
 3. **Q3: Haridussüsteemi efektiivsus** – Pingerida ja võrdlus: reaalne investeering ühe õppuri kohta vs regiooni keskmine.
 4. **Q4: Dünaamika ja trendid** – Kõrghariduse pikaajaline areng võrdluses üldise majanduskasvuga (2013–2022).
+<br>
+
+## **Ava Dashboard [SIIT](https://app.powerbi.com/view?r=eyJrIjoiMWI3NGI3YTMtYTY0My00OWIzLTk1N2ItM2JiMjM4NzcwNDI2IiwidCI6ImZhNmYwMjAyLThjMTctNDBhYS05Y2QxLTdhYWM0NDM5YWY1MSIsImMiOjh9)**
 
 <br>
 <br>
