@@ -99,7 +99,7 @@ graph TD
 
 ### Andmekvaliteet ja valideerimine
 Andmete usaldusväärsuse tagamiseks on rakendatud järgmised kontrollid:
-- **Sünkroonimine**: Kõik kolm andmeallikat on filtreeritud ühisele ajaraamile (2012–2022), et tagada suhtarvude matemaatiline korrektsus.
+- **Sünkroonimine**: Kõik kolm andmeallikat on filtreeritud ühisele ajaraamile (2013–2022), et tagada suhtarvude matemaatiline korrektsus.
 - **Puhastus**: Eemaldatud on Eurostati puuduvate andmete märkmed (:) ja kirjed, kus tudengite arv või kulu on 0.
 - **Normaliseerimine**: Toorandmetest on **eraldatud** märkmed (nt lipud 'b', 'p', 'e') iseseisvasse veergu `flag_code`. See võimaldab teisendada väärtused puhtalt numbrilisele kujule (`FLOAT64`/`INT64`), säilitades samal ajal metaandmed analüütiliseks tõlgendamiseks läbi `prod_dim_flags` dimensiooni.
 - **Andmete granulaarsuse sünkroonimine**: Kuna Eurostati finantsandmed (`finance`) ja haridusandmed (`education`) on erineva detailsusastmega, rakendati järgmist loogikat:
