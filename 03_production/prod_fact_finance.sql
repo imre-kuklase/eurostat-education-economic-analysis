@@ -15,7 +15,7 @@ SELECT
   flag_code             -- Mõõdik: kande märge
 FROM `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.stg_finance`
 WHERE 
-  year BETWEEN 2012 AND 2022
+  year BETWEEN 2013 AND 2022
   AND expenditure_amount > 0
   AND sector_code IN ('S13', 'S1D')
   AND isced_level = 'ED5-8'
