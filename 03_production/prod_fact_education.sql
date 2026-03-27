@@ -2,10 +2,10 @@
   TABEL: prod_fact_education
   KIRJELDUS: Õppurite jahunemine riigiti era- ja avaliku sektori kaupa
   ALLIKAS: stg_high_education
-  FILTER: 2012-2022, sünkroniseeritud teiste faktitabelitega.
+  FILTER: 2013-2022, sünkroniseeritud teiste faktitabelitega.
 
   MÄRKUS: Sisaldab andmekvaliteedi parandust (Hotfix) Eesti (EE) andmetele 
-  perioodil 2012-2015, kus avaliku ja erasektori sildid olid Eurostati 
+  perioodil 2013-2015, kus avaliku ja erasektori sildid olid Eurostati 
   algallikas vahetuses.
 */
 
