@@ -2,7 +2,7 @@
   TABEL: prod_fact_gdp
   KIRJELDUS: Riikide SKP näitajad jooksvates hindades (Current Prices).
   ALLIKAS: stg_gdp
-  AJARAAM: 2012-2022 (Sünkroniseeritud haridusandmetega)
+  AJARAAM: 2013-2022 (Sünkroniseeritud haridusandmetega)
 */
 
 CREATE OR REPLACE TABLE `optimal-cogency-483908-t3.kursusetoo_korghariduse_analyys.prod_fact_gdp` AS
