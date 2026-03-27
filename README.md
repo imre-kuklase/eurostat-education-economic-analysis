@@ -1,4 +1,4 @@
-# Euroopa kõrghariduse ja majandusnäitajate analüüs (2012 - 2022)
+# Euroopa kõrghariduse ja majandusnäitajate analüüs (2013 - 2022)
 
 Antud projekt analüüsib Euroopa kõrghariduse suundumusi, tudengite arvu ja riiklikke hariduskulutusi, kasutades Eurostati andmeid. Projekt on üles ehitatud Medallion-arhitektuuri põhimõttel Google BigQuery keskkonnas.
 
@@ -7,7 +7,7 @@ Projekt on loodud vastama järgmistele küsimustele:
 - Kuidas korreleerub kõrghariduse rahastamine riigi majandusliku võimekusega (SKP)?
 - Erakõrghariduse osakaalu mõju riigiti majandusnäitajatele?
 - Millised Euroopa riigid investeerivad kõige rohkem ühe üliõpilase kohta?
-- Kuidas on kõrghariduse struktuur ja tudengite arv muutunud võrreldes riikide SKP kasvuga perioodil 2012–2022?
+- Kuidas on kõrghariduse struktuur ja tudengite arv muutunud võrreldes riikide SKP kasvuga perioodil 2013–2022?
 <br>
 <br>
 
